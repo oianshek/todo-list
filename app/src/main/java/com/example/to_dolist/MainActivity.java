@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> itemsAdapter;
     ListView listView;
     Button addBtn;
+    Button addBtn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +25,29 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         addBtn = findViewById(R.id.addBtn);
 
+
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItem(v);
+                showDialog();
             }
         });
 
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,items);
         listView.setAdapter(itemsAdapter);
         removeItem();
+    }
+
+    private void addItem(Dialog dialog) {
+        EditText editText = dialog.findViewById(R.id.itemsToAdd);
+        String itemText = editText.getText().toString();
+
+        if(!itemText.equals("")){
+            itemsAdapter.add(itemText);
+            editText.setText("");
+        }else{
+            Toast.makeText(getApplicationContext(),"Enter text!",Toast.LENGTH_LONG).show();
+        }
     }
 
     private void removeItem() {
@@ -50,17 +64,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void addItem(View view) {
-        EditText editText = findViewById(R.id.itemToAdd);
-        String itemText = editText.getText().toString();
+    private void showDialog(){
+        final Dialog dialog = new Dialog( this);
+        dialog.setContentView(R.layout.add_items);
+        dialog.setTitle("Add items:");
 
-        if(!itemText.equals("")){
-            itemsAdapter.add(itemText);
-            editText.setText("");
-        }else{
-            Toast.makeText(getApplicationContext(),"Enter text!",Toast.LENGTH_LONG).show();
-        }
+        addBtn2 = dialog.findViewById(R.id.addBtn2);
+
+        addBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addItem(dialog);
+            }
+        });
+
+        dialog.show();
     }
-
 
 }

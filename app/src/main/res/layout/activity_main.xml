@@ -9,33 +9,22 @@
         android:background="@color/bg"
         android:orientation="vertical"
 >
-    <EditText
-            android:layout_width="349dp"
-            android:layout_height="65dp"
-            android:inputType="textPersonName"
-            android:hint="What to do.."
-            android:ems="10"
-            android:id="@+id/itemToAdd"
-            app:layout_constraintEnd_toStartOf="@+id/addBtn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0"/>
     <Button
-            android:text="Add Item"
+            android:text="Add"
             android:layout_width="91dp"
             android:layout_height="59dp" android:id="@+id/addBtn"
-            android:layout_marginEnd="2dp" android:layout_marginRight="2dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="2dp"/>
+            android:layout_marginBottom="2dp" app:layout_constraintStart_toStartOf="parent"
+    />
     <View
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="#504B4B"
-            app:layout_constraintBottom_toTopOf="@+id/itemToAdd" android:layout_marginEnd="1dp"
+            android:layout_marginEnd="1dp"
             android:layout_marginRight="1dp" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="1dp"
-            android:layout_marginStart="1dp"/>
+            android:layout_marginStart="1dp" app:layout_constraintBottom_toTopOf="@+id/addBtn"/>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="401dp"
